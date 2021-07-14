@@ -2,6 +2,14 @@ import React from 'react'
 import ErrorComponent from './ErrorComponent'
 
 export class App extends React.Component {
+  state = {
+    hasError: false
+  }
+
+  static getDerivedStateFromError (error) {
+    return { hasError: true }
+  }
+
   componentDidCatch (error, info) {
     console.log(error)
     console.log(info)
@@ -11,7 +19,12 @@ export class App extends React.Component {
     return (
       <div>
         CodeRoad APP
-        <ErrorComponent />
+        {
+          this.state.hasError ?
+            <h1>Error occurred</h1>
+            :
+            <ErrorComponent />
+        }
       </div>
     )
   }
