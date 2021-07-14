@@ -7,15 +7,21 @@ export class App extends React.Component {
   }
 
   static getDerivedStateFromError (error) {
+    console.log('getDerivedStateFromError')
+
     return { hasError: true }
   }
 
   componentDidCatch (error, info) {
+    console.log('componentDidCatch')
+
     console.log(error)
     console.log(info)
   }
 
   render () {
+    console.log('render')
+
     return (
       <div>
         CodeRoad APP
